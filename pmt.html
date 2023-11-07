@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Management Tool</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <!-- Your project management interface here -->
+    <div id="projects">
+        <!-- Display projects here -->
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
+// Define API endpoints for managing projects
+app.get('/projects', (req, res) => {
+    // Retrieve and send a list of projects as JSON
+});
+
+app.post('/projects', (req, res) => {
+    // Create a new project
+});
+
+app.put('/projects/:id', (req, res) => {
+    // Update an existing project by ID
+});
+
+app.delete('/projects/:id', (req, res) => {
+    // Delete a project by ID
+});
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/project_management', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const projectSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    tasks: [String], // You can create a Task schema as well
+});
+
+const Project = mongoose.model('Project', projectSchema);
+
+module.exports = Project;
+// Example using Fetch API to retrieve projects
+fetch('/projects')
+    .then(response => response.json())
+    .then(data => {
+        // Handle the retrieved project data
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
